@@ -37,3 +37,23 @@ function initAccordion() {
   }
 }
 initAccordion();
+
+const linksInternos = document.querySelectorAll('.js-menu a[href^="#"');
+
+function scrollToSection(event) {
+  event.preventDefault();
+  const href = event.currentTarget.getAttribute("href");
+  const section = document.querySelectorAll(href);
+  section.scrollIntoView({
+    behavior: "smooth",
+  });
+  // forma alternativa
+  // scrollTo({
+  //   top: 1000,
+  //   behavior: 'smooth'
+  // })
+}
+
+linksInternos.forEach((link) => {
+  link.addEventListener("click", scrollToSection);
+});
